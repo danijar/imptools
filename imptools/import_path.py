@@ -15,7 +15,11 @@ def import_path(path, name=None, notfound='error', reload=False):
   Relative paths are resolved relative to the directory of the source file that
   calls `import_path()`.
 
-  Example:
+  ```
+  import imptools
+
+  my_module = imptools.import_path('../path/to/my_module')
+  ```
 
   ```
   import imptools
@@ -30,7 +34,6 @@ def import_path(path, name=None, notfound='error', reload=False):
   ```
 
   Args:
-
     path (str or Path): The filesystem path to the module to import. This
       should be either a directory containing an `__init__.py` file or a single
       file with `.py` extension. The path can be relative.
@@ -43,12 +46,10 @@ def import_path(path, name=None, notfound='error', reload=False):
       already loaded.
 
   Raises:
-
     ModuleNotFoundError: If `path` does not point to a module or if `name` is
       specified and dose not match the directory name of `path`.
 
   Returns:
-
     The module or `None` if it was not found.
   """
   assert notfound in ('error', 'ignore')

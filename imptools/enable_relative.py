@@ -16,8 +16,6 @@ def enable_relative():
   function that can be imported and called inside the script, before any
   relative imports.
 
-  Example:
-
   ```
   import imptools
 
@@ -27,7 +25,6 @@ def enable_relative():
   ```
 
   Raises:
-
     ModuleNotFoundError: If the parent directory of the script that calls this
       function is not a module.
   """
