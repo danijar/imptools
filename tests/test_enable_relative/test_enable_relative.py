@@ -1,10 +1,11 @@
 import pathlib
 import subprocess
+import sys
 
 
 def test_run_good_as_module():
   code, stdout, stderr = sh(
-      'python3 -m test_enable_relative.good_script')
+      f'{sys.executable} -m test_enable_relative.good_script')
   assert code == 0
   assert stdout == 'Helper!'
   assert stderr == ''
@@ -12,7 +13,7 @@ def test_run_good_as_module():
 
 def test_run_bad_as_module():
   code, stdout, stderr = sh(
-      'python3 -m test_enable_relative.bad_script')
+      f'{sys.executable} -m test_enable_relative.bad_script')
   assert code == 0
   assert stdout == 'Helper!'
   assert stderr == ''
@@ -20,7 +21,7 @@ def test_run_bad_as_module():
 
 def test_run_good_as_script():
   code, stdout, stderr = sh(
-      'python3 test_enable_relative/good_script.py')
+      f'{sys.executable} test_enable_relative/good_script.py')
   print(stderr)
   assert code == 0
   assert stdout == 'Helper!'
@@ -29,7 +30,7 @@ def test_run_good_as_script():
 
 def test_run_bad_as_script():
   code, stdout, stderr = sh(
-      'python3 test_enable_relative/bad_script.py')
+      f'{sys.executable} test_enable_relative/bad_script.py')
   assert code == 1
   assert stdout == ''
   assert 'ImportError' in stderr
